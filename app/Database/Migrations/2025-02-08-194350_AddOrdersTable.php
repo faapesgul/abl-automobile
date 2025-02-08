@@ -20,10 +20,17 @@ class User extends Migration
                 'constraint' => 5,
                 'unsigned'   => true,
             ],
-           
-           'total_price'=>[
+            'cars_id' => [
                 'type'       => 'INT',
                 'constraint' => 5,
+                'unsigned'   => true,
+            ],
+           
+           'total_price'=>[
+            'type'       => 'BIGINT',
+            'unsigned'   => true,
+            'null'       => false,
+            'default'    => 0
            ],
            'payment_method' => [
                 'type'       => 'ENUM',
