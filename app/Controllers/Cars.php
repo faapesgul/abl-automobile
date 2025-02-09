@@ -2,13 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Models\CarModel;
+
 class Cars extends BaseController
 {
     public function index()
     {
-        $db = db_connect();
-        $query =  $db->query('select * from cars');
- 
-         var_dump($query->getResult()) ;
+        $cars = new CarModel();
+        return $this->response->setJSON($cars->findAll());
     }
+
+    
 }

@@ -47,6 +47,8 @@ class User extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
+        $this->forge->addForeignKey('users_id', 'users', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('cars_id', 'cars', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('orders');
     }
 

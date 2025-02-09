@@ -2,13 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Models\OrderModel;
+
 class Orders extends BaseController
 {
     public function index()
     {
-        $db = db_connect();
-        $query =  $db->query('select * from orders');
- 
-         var_dump($query->getResult()) ;
+        $orders = new OrderModel();
+        return $this->response->setJSON($orders->findAll());
     }
-}
+    public function getOrderById($id){
+            $orders = new OrderModel();
+            $order = $orders->find($id);
+            return $this->response->setJSON($order);
+
+    }
+} 
