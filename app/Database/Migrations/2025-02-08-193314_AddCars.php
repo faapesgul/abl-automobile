@@ -24,10 +24,7 @@ class User extends Migration
                 'constraint' => '100',
             ],
             'price' => [
-                'type'       => 'BIGINT',
-                'unsigned'   => true,
-                'null'       => false,
-                'default'    => 0
+                'type'       => 'TEXT',
             ],
            'status' => [
                 'type'       => 'ENUM',
