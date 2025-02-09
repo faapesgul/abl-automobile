@@ -2,12 +2,12 @@
 
 namespace App\Controllers;
 
-class Customers extends BaseController
+class Automobile extends BaseController
 {
     public function index()
     {
         $db = db_connect();
-        $query = $db->query('SELECT * FROM customers')->getResult();
+        $query = $db->query('SELECT * FROM automobiles')->getResult();
 
         $response = [
             'status' => 'success',

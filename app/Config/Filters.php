@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Filters\ApiKeyAndThrottleFilter;
+use App\Filters\BasicAuthFilter;
 use CodeIgniter\Config\Filters as BaseFilters;
 use CodeIgniter\Filters\Cors;
 use CodeIgniter\Filters\CSRF;
@@ -34,6 +36,8 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'apiKey'        => ApiKeyAndThrottleFilter::class,
+        'basicAuth'     => BasicAuthFilter::class,
     ];
 
     /**
@@ -52,7 +56,8 @@ class Filters extends BaseFilters
     public array $required = [
         'before' => [
             'forcehttps', // Force Global Secure Requests
-            'pagecache',  // Web Page Caching
+            'pagecache',  // Web Page Caching,
+            'apiKey',
         ],
         'after' => [
             'pagecache',   // Web Page Caching
@@ -72,6 +77,7 @@ class Filters extends BaseFilters
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
+            'basicAuth',
         ],
         'after' => [
             // 'honeypot',
