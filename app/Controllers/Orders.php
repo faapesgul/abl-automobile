@@ -9,11 +9,18 @@ class Orders extends BaseController
     public function getOrderById($id)
     {
         $orders = new OrderModel();
-        $order = $orders->find($id);
+        $orderDetails = $orders->find($id);
+    $orderCars = $orders->getOrderWithCar($id);
+    $orderCustomers = $orders->getOrderWithCustomer($id);
+       
 
         return $this->response->setJSON([
             'status' => 'success',
-            'data' => $order
+            'data' => [
+                'orders_detail'=>$orderDetails,
+                'customers'=>$orderCustomers,
+                'cars'=> $orderCars
+            ]
         ]);
     }
 

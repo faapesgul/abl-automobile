@@ -43,4 +43,23 @@ class OrderModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getOrderWithCar($orderId)
+    {
+        return $this->select('automobiles.*')
+                    ->join('automobiles', 'orders.automobile_id = automobiles.automobile_id', 'left')
+                    ->where('orders.order_id', $orderId)
+                    ->first(); // Ambil satu data berdasarkan ID
+    }
+
+    /**
+     * Ambil data order dengan customer berdasarkan ID order
+     */
+    public function getOrderWithCustomer($orderId)
+    {
+        return $this->select('customers.*')
+                    ->join('customers', 'orders.customer_id = customers.customer_id', 'left')
+                    ->where('orders.order_id', $orderId)
+                    ->first(); // Ambil satu data berdasarkan ID
+    }
 }

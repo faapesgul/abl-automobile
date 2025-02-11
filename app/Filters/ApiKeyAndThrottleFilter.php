@@ -30,7 +30,7 @@ class ApiKeyAndThrottleFilter implements FilterInterface
         // Menggunakan cache untuk throttling
         $cache = Services::cache(); // Menggunakan cache dengan file
         $IP = $request->getIPAddress();
-        $cacheKey = "throttle_{$IP}";  // Menggunakan IP sebagai key untuk throttle
+        $cacheKey = "throttle_" . md5($request->getIPAddress());  // Menggunakan IP sebagai key untuk throttle
 
         $limit = 10; // Batas jumlah permintaan
         $timeWindow = 60; // Waktu jendela dalam detik (misalnya 1 menit)
